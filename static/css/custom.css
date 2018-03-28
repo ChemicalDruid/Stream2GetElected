@@ -6,9 +6,6 @@
    font-size: 60px;
 }
  
- 
- 
- 
 .dc-chart g.row text {
    fill: black;
    font-size: 12px;
@@ -40,7 +37,6 @@
    padding-bottom: 0px;
 }
  
- 
 .dc-select-menu {
    background: #33CC99;
    width: 80%;
@@ -53,10 +49,9 @@
    text-align: center;
    padding-top: 4px;
    padding-bottom: 0px;
- 
 }
 
-#intro-button {
+.intro-button {
     float: right;
     margin-top: 10px;
 }

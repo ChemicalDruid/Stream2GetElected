@@ -30,8 +30,8 @@ function makeGraphs(error, donorsUSProjects) {
     var povertyLevelDim = ndx.dimension(function (d) {
         return d["poverty_level"];
     });
-    var stateDim = ndx.dimension(function (d) {
-        return d["school_state"];
+    var cityDim = ndx.dimension(function (d) {
+        return d["school_city"];
     });
     var fundingStatus = ndx.dimension(function (d) {
         return d["funding_status"];
@@ -43,10 +43,10 @@ function makeGraphs(error, donorsUSProjects) {
     var numProjectsByResourceType = resourceTypeDim.group();
     var numProjectsByPovertyLevel = povertyLevelDim.group();
     var numProjectsByFundingStatus = fundingStatus.group();
-    var totalDonationsByState = stateDim.group().reduceSum(function (d) {
+    var totalDonationsByCity = cityDim.group().reduceSum(function (d) {
         return d["total_donations"];
     });
-    var stateGroup = stateDim.group();
+    var cityGroup = cityDim.group();
  
  
     var all = ndx.groupAll();
@@ -69,8 +69,8 @@ function makeGraphs(error, donorsUSProjects) {
  
  
     selectField
-        .dimension(stateDim)
-        .group(stateGroup);
+        .dimension(cityDim)
+        .group(cityGroup);
  
     numberProjectsND
         .formatNumber(d3.format("d"))
