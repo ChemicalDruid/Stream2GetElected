@@ -121,6 +121,7 @@ function makeGraphs(error, projectsJSON) {
         .height(220)
         .dimension(resourceTypeDim)
         .group(numProjectsByResourceType)
+        .elasticX(true)
         .xAxis().ticks(4);
  
     povertyLevelChart
@@ -129,6 +130,7 @@ function makeGraphs(error, projectsJSON) {
         .height(250)
         .dimension(povertyLevelDim)
         .group(numProjectsByPovertyLevel)
+        .elasticX(true)
         .xAxis().ticks(4);
  
     fundingStatusChart
