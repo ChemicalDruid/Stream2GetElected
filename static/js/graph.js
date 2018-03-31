@@ -2,13 +2,14 @@ queue()
     .defer(d3.json, "/donorsUS/projects")
     .await(makeGraphs);
  
-function makeGraphs(error, donorsUSProjects) {
+function makeGraphs(error, projectsJSON) {
     if (error) {
         console.error("makeGraphs error on receiving dataset:", error.statusText);
         throw error;
     }
  
     //Clean donorsUSProjects data
+    var donorsUSProjects = projectsJSON;
     var dateFormat = d3.time.format("%Y-%m-%d %H:%M:%S");
     donorsUSProjects.forEach(function (d) {
         d["date_posted"] = dateFormat.parse(d["date_posted"]);
@@ -36,24 +37,32 @@ function makeGraphs(error, donorsUSProjects) {
     var fundingStatus = ndx.dimension(function (d) {
         return d["funding_status"];
     });
- 
+    var areaDim = ndx.dimension(function (d) {
+        return d['school_metro']
+    });
+    var subjectDim = ndx.dimension(function (d) {
+        return d["primary_focus_subject"];
+    });
+    var gradeDim = ndx.dimension(function (d) {
+        return d['grade_level']
+    });
+
  
     //Calculate metrics
     var numProjectsByDate = dateDim.group();
     var numProjectsByResourceType = resourceTypeDim.group();
     var numProjectsByPovertyLevel = povertyLevelDim.group();
     var numProjectsByFundingStatus = fundingStatus.group();
-    var totalDonationsByCity = cityDim.group().reduceSum(function (d) {
-        return d["total_donations"];
-    });
+    var numPFSubject = subjectDim.group();
+    var numGradeRange = gradeDim.group();
+    var numArea = areaDim.group();
     var cityGroup = cityDim.group();
- 
- 
+
     var all = ndx.groupAll();
     var totalDonations = ndx.groupAll().reduceSum(function (d) {
         return d["total_donations"];
     });
- 
+
     //Define values (to be used in charts)
     var minDate = dateDim.bottom(1)[0]["date_posted"];
     var maxDate = dateDim.top(1)[0]["date_posted"];
@@ -65,13 +74,18 @@ function makeGraphs(error, donorsUSProjects) {
     var numberProjectsND = dc.numberDisplay("#number-projects-nd");
     var totalDonationsND = dc.numberDisplay("#total-donations-nd");
     var fundingStatusChart = dc.pieChart("#funding-chart");
+    var pFSubjectChart = dc.pieChart("#subject-chart");
+    var gradeRangeChart = dc.pieChart("#grade-range-chart");
+    var areaChart = dc.pieChart("#area-chart");
+
     var selectField = dc.selectMenu('#menu-select');
- 
- 
+
+    var pieWidth = document.getElementById('size-pie').offsetWidth;
+
     selectField
         .dimension(cityDim)
         .group(cityGroup);
- 
+
     numberProjectsND
         .formatNumber(d3.format("d"))
         .valueAccessor(function (d) {
@@ -89,8 +103,8 @@ function makeGraphs(error, donorsUSProjects) {
  
     timeChart
         .ordinalColors(["#C96A23"])
-        .width(1200)
-        .height(300)
+        .width(900)
+        .height(250)
         .margins({top: 30, right: 50, bottom: 30, left: 50})
         .dimension(dateDim)
         .group(numProjectsByDate)
@@ -101,18 +115,17 @@ function makeGraphs(error, donorsUSProjects) {
         .xAxisLabel("Year")
         .yAxis().ticks(6);
  
- 
-    resourceTypeChart
+     resourceTypeChart
         .ordinalColors(["#79CED7", "#66AFB2", "#C96A23", "#D3D1C5", "#F5821F"])
-        .width(300)
-        .height(250)
+        .width(450)
+        .height(220)
         .dimension(resourceTypeDim)
         .group(numProjectsByResourceType)
         .xAxis().ticks(4);
  
     povertyLevelChart
         .ordinalColors(["#79CED7", "#66AFB2", "#C96A23", "#D3D1C5", "#F5821F"])
-        .width(300)
+        .width(450)
         .height(250)
         .dimension(povertyLevelDim)
         .group(numProjectsByPovertyLevel)
@@ -121,12 +134,41 @@ function makeGraphs(error, donorsUSProjects) {
     fundingStatusChart
         .ordinalColors(["#79CED7", "#66AFB2", "#C96A23", "#D3D1C5", "#F5821F"])
         .height(220)
-        .radius(90)
+        .radius((pieWidth / 2) - 30)
         .innerRadius(40)
         .transitionDuration(1500)
         .dimension(fundingStatus)
         .group(numProjectsByFundingStatus);
  
- 
+     pFSubjectChart
+        .height(220)
+        .radius((pieWidth / 2) - 30)
+        .innerRadius(0)
+//        .colors(colourScale)
+        .transitionDuration(1500)
+        .dimension(subjectDim)
+        .group(numPFSubject)
+        .transitionDuration(600);
+
+    gradeRangeChart
+        .height(220)
+        .radius((pieWidth / 2) - 30)
+        .innerRadius(40)
+//        .colors(colourScale)
+        .transitionDuration(1500)
+        .dimension(gradeDim)
+        .group(numGradeRange)
+        .transitionDuration(600);
+
+    areaChart
+        .height(220)
+        .radius((pieWidth / 2) - 30)
+        .innerRadius(0)
+//        .colors(colourScale)
+        .transitionDuration(1500)
+        .dimension(areaDim)
+        .group(numArea)
+        .transitionDuration(600);
+
     dc.renderAll();
 }

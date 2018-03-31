@@ -27,7 +27,24 @@ I pretend to run for Governor of a US state. As part of my campaign, I use a dat
 **[Intro.js](http://introjs.com/)** - Used to provide a step-by step guide to the application.
 
 ## dc.js Charts
-TBC
+
+### Total Number of Donations
+
+### Total Donations in USD
+
+### Number of Donations
+
+### Poverty Level
+
+### Resources Type
+
+### Area
+
+### Funding Status
+
+### Primary Focus Subject
+
+### Grade Range
 
 ## Hosting
 The application is deployed on the [Heroku](https://.heroku.com) PAAS (platform as a service) using a free dyno and a MongoDB 'add-on'. Config vars are utilised in the Flask framework to automatically switch the application between local development and production modes.

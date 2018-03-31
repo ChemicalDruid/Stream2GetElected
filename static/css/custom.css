@@ -8,7 +8,7 @@
  
 .dc-chart g.row text {
    fill: black;
-   font-size: 12px;
+   font-size: 16px;
 }
  
 #total-projects {
@@ -16,7 +16,7 @@
    width: 200px;
    position: relative;
    height: 60px;
-   font-size: 29px;
+   font-size: 24px;
    color: white;
    vertical-align: middle;
    text-align: center;
@@ -29,7 +29,7 @@
    width: 200px;
    position: relative;
    height: 60px;
-   font-size: 29px;
+   font-size: 24px;
    color: white;
    vertical-align: middle;
    text-align: center;
@@ -39,11 +39,11 @@
  
 .dc-select-menu {
    background: #33CC99;
-   width: 80%;
+   width: 100%;
    border: none;
    position: relative;
-   height: 31px;
-   font-size: 15px;
+   height: 60px;
+   font-size: 24px;
    color: white;
    vertical-align: middle;
    text-align: center;
