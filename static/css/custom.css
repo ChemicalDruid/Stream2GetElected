@@ -51,6 +51,10 @@
    padding-bottom: 0px;
 }
 
+div.chart-stage {
+   background: rgba(224, 224, 224, 0.75)
+}
+
 .intro-button {
     float: right;
     margin-top: 10px;

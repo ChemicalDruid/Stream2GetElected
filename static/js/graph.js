@@ -68,7 +68,7 @@ function makeGraphs(error, projectsJSON) {
     var maxDate = dateDim.top(1)[0]["date_posted"];
  
     //Charts
-    var timeChart = dc.lineChart("#time-chart");
+    var timeChart = dc.barChart("#time-chart");
     var resourceTypeChart = dc.rowChart("#resource-type-row-chart");
     var povertyLevelChart = dc.rowChart("#poverty-level-row-chart");
     var numberProjectsND = dc.numberDisplay("#number-projects-nd");
@@ -102,13 +102,12 @@ function makeGraphs(error, projectsJSON) {
         .formatNumber(d3.format(".3s"));
  
     timeChart
-        .ordinalColors(["#C96A23"])
-        .width(900)
+        .width(800)
         .height(250)
-        .margins({top: 30, right: 50, bottom: 30, left: 50})
+        .colors("#C96A23")
+        .margins({top: 10, right: 50, bottom: 30, left: 50})
         .dimension(dateDim)
         .group(numProjectsByDate)
-        .renderArea(true)
         .transitionDuration(500)
         .x(d3.time.scale().domain([minDate, maxDate]))
         .elasticY(true)
@@ -117,7 +116,7 @@ function makeGraphs(error, projectsJSON) {
  
      resourceTypeChart
         .ordinalColors(["#79CED7", "#66AFB2", "#C96A23", "#D3D1C5", "#F5821F"])
-        .width(450)
+        .width(400)
         .height(220)
         .dimension(resourceTypeDim)
         .group(numProjectsByResourceType)
@@ -126,7 +125,7 @@ function makeGraphs(error, projectsJSON) {
  
     povertyLevelChart
         .ordinalColors(["#79CED7", "#66AFB2", "#C96A23", "#D3D1C5", "#F5821F"])
-        .width(450)
+        .width(400)
         .height(250)
         .dimension(povertyLevelDim)
         .group(numProjectsByPovertyLevel)
@@ -136,15 +135,15 @@ function makeGraphs(error, projectsJSON) {
     fundingStatusChart
         .ordinalColors(["#79CED7", "#66AFB2", "#C96A23", "#D3D1C5", "#F5821F"])
         .height(220)
-        .radius((pieWidth / 2) - 30)
-        .innerRadius(40)
+        .radius((pieWidth / 2) - 20)
+        .innerRadius(30)
         .transitionDuration(1500)
         .dimension(fundingStatus)
         .group(numProjectsByFundingStatus);
  
      pFSubjectChart
         .height(220)
-        .radius((pieWidth / 2) - 30)
+        .radius((pieWidth / 2) - 20)
         .innerRadius(0)
 //        .colors(colourScale)
         .transitionDuration(1500)
@@ -154,8 +153,8 @@ function makeGraphs(error, projectsJSON) {
 
     gradeRangeChart
         .height(220)
-        .radius((pieWidth / 2) - 30)
-        .innerRadius(40)
+        .radius((pieWidth / 2) - 20)
+        .innerRadius(30)
 //        .colors(colourScale)
         .transitionDuration(1500)
         .dimension(gradeDim)
@@ -164,7 +163,7 @@ function makeGraphs(error, projectsJSON) {
 
     areaChart
         .height(220)
-        .radius((pieWidth / 2) - 30)
+        .radius((pieWidth / 2) - 20)
         .innerRadius(0)
 //        .colors(colourScale)
         .transitionDuration(1500)

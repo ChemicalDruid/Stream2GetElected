@@ -11,11 +11,11 @@
 <body class="application">
   <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container-fluid">
-      <div class="navbar-header" data-step="1" data-intro="This is the navigation bar." style="font-weight: normal" data-position="right">
+      <div class="navbar-header" data-step="1" data-intro="This is the navigation bar - a bit whited out, but it will be there for you!" style="font-weight: normal" data-position="bottom">
         <a class="navbar-brand" href="./">Get Yourself Elected</a>
         <ul class="navbar-nav nav">
-            <li><a href="/campaign">The Campaign</a></li>
-            <li><button class="intro-button" type="button" autofocus onclick="javascript:introJs().start();">Start Tour!</button></li>
+          <li><a href="/campaign">The Campaign</a></li>
+          <li><button class="intro-button" type="button" autofocus onclick="javascript:introJs().setOption('overlayOpacity','0.4').start();">Page Tour</button></li>
         </ul>
       </div>
     </div>
@@ -31,7 +31,7 @@
           <div class="chart-title">
             Donation City
           </div>
-          <div class="chart-stage" data-step="2" data-intro="Here you select the city to see its donations data." style="font-weight: normal" data-position="right">
+          <div class="chart-stage" data-step="2" data-intro="Here you select the city to see its donations data." style="font-weight: normal" data-position="bottom">
             <div id="menu-select"></div>
           </div>
         </div>
@@ -43,7 +43,7 @@
           <div class="chart-title">
             Total Number of Donations
           </div>
-          <div class="chart-stage" data-step="3" data-intro="This is the overall number of registered donations." data-position="right">
+          <div class="chart-stage" data-step="3" data-intro="This is the overall number of registered donations." data-position="bottom">
             <div id="number-projects-nd"></div>
           </div>
         </div>
@@ -55,7 +55,7 @@
           <div class="chart-title">
             Total Donations in USD
           </div>
-          <div class="chart-stage" data-step="4" data-intro="This is the overall value of all donations in US$." style="font-weight: normal" data-position="right">
+          <div class="chart-stage" data-step="4" data-intro="This is the overall value of all donations in US dollars." style="font-weight: normal" data-position="bottom">
             <div id="total-donations-nd"></div>
           </div>
         </div>
@@ -69,9 +69,9 @@
       <div class="col-lg-8 col-md-12">
         <div class="chart-wrapper">
           <div class="chart-title">
-            Number of Donations
+            Number of Donations over time
           </div>
-          <div class="chart-stage" data-step="5" data-intro="This is the number of registered donations over time." style="font-weight: normal" data-position="right">
+          <div class="chart-stage" data-step="5" data-intro="This chart shows the number of registered donations in the past. Feel free to select any period for more specific information." style="font-weight: normal" data-position="bottom">
             <div id="time-chart"></div>
           </div>
         </div>
@@ -83,7 +83,7 @@
           <div class="chart-title">
             Poverty Level
           </div>
-          <div class="chart-stage" data-step="6" data-intro="These are the levels of poverty." style="font-weight: normal" data-position="right">
+          <div class="chart-stage" data-step="6" data-intro="These are the levels of poverty. You may click anywhere for specifics." style="font-weight: normal" data-position="bottom">
             <div id="poverty-level-row-chart"></div>
           </div>
         </div>
@@ -99,7 +99,7 @@
           <div class="chart-title">
               Resources Type
           </div>
-          <div class="chart-stage" data-step="7" data-intro="These are the types of resources." style="font-weight: normal" data-position="right">
+          <div class="chart-stage" data-step="7" data-intro="These are the types of resources. In all charts, you can click anywhere for specifics." style="font-weight: normal" data-position="right">
             <div id="resource-type-row-chart"></div>
           </div>
         </div>
@@ -123,7 +123,7 @@
           <div class="chart-title">
             Funding Status
           </div>
-          <div class="chart-stage" data-step="9" data-intro="This is the funding status." style="font-weight: normal" data-position="right">
+          <div class="chart-stage" data-step="9" data-intro="These are the funding statuses." style="font-weight: normal" data-position="right">
             <div id="funding-chart"></div>
           </div>
         </div>
@@ -147,7 +147,7 @@
           <div class="chart-title">
             Grade Range
           </div>
-          <div class="chart-stage" data-step="11" data-intro="These are the grade levels." style="font-weight: normal" data-position="right">
+          <div class="chart-stage" data-step="11" data-intro="These are the grade levels." style="font-weight: normal" data-position="left">
             <div id="grade-range-chart"></div>
           </div>
         </div>
