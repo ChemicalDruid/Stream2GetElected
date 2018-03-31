@@ -13,68 +13,16 @@
     <div class="container-fluid">
       <div class="navbar-header" data-step="1" data-intro="This is the navigation bar." style="font-weight: normal" data-position="right">
         <a class="navbar-brand" href="./">Get Yourself Elected</a>
-        <button class="intro-button" type="button" autofocus onclick="javascript:introJs().start();">Start Tour!</button> 
+        <ul class="navbar-nav nav">
+            <li><a href="/campaign">The Campaign</a></li>
+            <li><button class="intro-button" type="button" autofocus onclick="javascript:introJs().start();">Start Tour!</button></li>
+        </ul>
       </div>
     </div>
   </div>
+{% block content %}
   <div id="outer" class="container-fluid">
     <div class="row">
-      <div class="col-sm-8">
-        <div class="row">
-          <!-- Time Chart -->
-          <div class="col-sm-12">
-            <div class="chart-wrapper">
-              <div class="chart-title">
-                Number of Donations
-              </div>
-              <div class="chart-stage" data-step="2" data-intro="This is the number of registered donations." style="font-weight: normal" data-position="right">
-                <div id="time-chart"></div>
-              </div>
-            </div>
-          </div>
-          <!-- Time Chart -->
-
-          <!-- Resources -->
-          <div class="col-sm-6">
-            <div class="chart-wrapper">
-              <div class="chart-title">
-                Resources Type
-              </div>
-              <div class="chart-stage" data-step="3" data-intro="This is the type of resources." style="font-weight: normal" data-position="right">
-                <div id="resource-type-row-chart"></div>
-              </div>
-            </div>
-          </div>
-          <!-- Resources -->
-
-          <!-- funding Pie -->
-          <div class="col-sm-6">
-            <div class="chart-wrapper">
-              <div class="chart-title">
-                Funding Status
-              </div>
-              <div class="chart-stage" data-step="4" data-intro="This is the funding status." style="font-weight: normal" data-position="right">
-                <div id="funding-chart"></div>
-              </div>
-            </div>
-          </div>
-          <!-- funding Pie -->
-        </div>
-      </div>
-
-      <!-- Poverty -->
-      <div class="col-sm-3">
-        <div class="chart-wrapper">
-          <div class="chart-title">
-            Poverty Level
-          </div>
-          <div class="chart-stage" data-step="5" data-intro="This is the poverty level." style="font-weight: normal" data-position="right">
-            <div id="poverty-level-row-chart"></div>
-          </div>
-        </div>
-      </div>
-      <!-- Poverty -->
-
       <!-- menu select -->
       <div class="col-sm-6">
         <div class="chart-wrapper">
@@ -87,7 +35,6 @@
         </div>
       </div>
       <!-- menu select -->
-
       <!-- Metric 1 -->
       <div class="col-sm-2">
         <div class="chart-wrapper">
@@ -108,7 +55,6 @@
         </div>
       </div>
       <!-- Metric 1 -->
-
       <!-- Metric 2 -->
       <div class="col-sm-2">
         <div class="chart-wrapper">
@@ -121,8 +67,61 @@
         </div>
       </div>
       <!-- Metric 2 -->
+      <div class="col-sm-8">
+        <div class="row">
+          <!-- Time Chart -->
+          <div class="col-sm-12">
+            <div class="chart-wrapper">
+              <div class="chart-title">
+                Number of Donations
+              </div>
+              <div class="chart-stage" data-step="2" data-intro="This is the number of registered donations over time." style="font-weight: normal" data-position="right">
+                <div id="time-chart"></div>
+              </div>
+            </div>
+          </div>
+          <!-- Time Chart -->
+          <!-- Resources -->
+          <div class="col-sm-6">
+            <div class="chart-wrapper">
+              <div class="chart-title">
+                Resources Type
+              </div>
+              <div class="chart-stage" data-step="3" data-intro="These are the types of resources." style="font-weight: normal" data-position="right">
+                <div id="resource-type-row-chart"></div>
+              </div>
+            </div>
+          </div>
+          <!-- Resources -->
+          <!-- funding Pie -->
+          <div class="col-sm-6">
+            <div class="chart-wrapper">
+              <div class="chart-title">
+                Funding Status
+              </div>
+              <div class="chart-stage" data-step="4" data-intro="This is the funding status." style="font-weight: normal" data-position="right">
+                <div id="funding-chart"></div>
+              </div>
+            </div>
+          </div>
+          <!-- funding Pie -->
+        </div>
+      </div>
+      <!-- Poverty -->
+      <div class="col-sm-3">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Poverty Level
+          </div>
+          <div class="chart-stage" data-step="5" data-intro="This is the poverty level." style="font-weight: normal" data-position="right">
+            <div id="poverty-level-row-chart"></div>
+          </div>
+        </div>
+      </div>
+      <!-- Poverty -->
     </div>
   </div>
+{% endblock %}
   <hr>
   <p class="small text-muted"> Data viz &#9829; from Code Institute</p>
   <script src="{{ url_for ('static', filename='lib/js/jquery.min.js')}}"></script>

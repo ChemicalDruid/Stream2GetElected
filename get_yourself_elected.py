@@ -19,6 +19,14 @@ def index():
     return render_template("index.html")
 
 
+@app.route('/campaign')
+def campaign():
+    """
+    A Flask view to serve the campaign page.
+    """
+    return render_template("campaign.html")
+
+
 @app.route("/donorsUS/projects")
 def donor_projects():
     """
@@ -29,9 +37,9 @@ def donor_projects():
     # A constant that defines the record fields that we wish to retrieve.
     FIELDS = {
         '_id': False, 'funding_status': True, 'school_city': True,
-        'resource_type': True, 'poverty_level': True,
-        'date_posted': True, 'total_donations': True
-    }
+        'resource_type': True, 'poverty_level': True, 'date_posted': True,
+        'total_donations': True, 'primary_focus_subject': True,
+        'grade_level': True, 'school_metro': True}
 
     # Open a connection to MongoDB using a with statement such that the
     # connection will be closed as soon as we exit the with statement
