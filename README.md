@@ -60,4 +60,4 @@ Donut chart
 Manually tested for responsiveness and compatibility against various configurations.
 
 ## Hosting
-The application is deployed on the [Heroku](https://.heroku.com) PAAS (platform as a service) platform using a free dyno and a MongoDB add-on. Config variables are utilised in the Flask framework to automatically switch the application between local development and production modes.
+The application is deployed on the [Heroku](https://blueberry-pie-71801.herokuapp.com/) PAAS (platform as a service) platform using a free dyno and a MongoDB add-on. Config variables are utilised in the Flask framework to automatically switch the application between local development and production modes.
