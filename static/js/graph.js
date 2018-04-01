@@ -78,9 +78,10 @@ function makeGraphs(error, projectsJSON) {
     var gradeRangeChart = dc.pieChart("#grade-range-chart");
     var areaChart = dc.pieChart("#area-chart");
 
-    var selectField = dc.selectMenu('#menu-select');
-
     var pieWidth = document.getElementById('size-pie').offsetWidth;
+    var colorScale = d3.scale.ordinal().range(["#7cec59", "#3f9e99", "#d39644", "#803dc1", "#f14092", "#11ACCA"]);
+
+    var selectField = dc.selectMenu('#menu-select');
 
     selectField
         .dimension(cityDim)
@@ -104,7 +105,7 @@ function makeGraphs(error, projectsJSON) {
     timeChart
         .width(800)
         .height(250)
-        .colors("#C96A23")
+        .colors("#d39644")
         .margins({top: 10, right: 50, bottom: 30, left: 50})
         .dimension(dateDim)
         .group(numProjectsByDate)
@@ -115,28 +116,28 @@ function makeGraphs(error, projectsJSON) {
         .yAxis().ticks(6);
  
      resourceTypeChart
-        .ordinalColors(["#79CED7", "#66AFB2", "#C96A23", "#D3D1C5", "#F5821F"])
         .width(400)
         .height(220)
+        .colors(colorScale)
         .dimension(resourceTypeDim)
         .group(numProjectsByResourceType)
         .elasticX(true)
         .xAxis().ticks(4);
  
     povertyLevelChart
-        .ordinalColors(["#79CED7", "#66AFB2", "#C96A23", "#D3D1C5", "#F5821F"])
         .width(400)
         .height(250)
+        .colors(colorScale)
         .dimension(povertyLevelDim)
         .group(numProjectsByPovertyLevel)
         .elasticX(true)
         .xAxis().ticks(4);
  
     fundingStatusChart
-        .ordinalColors(["#79CED7", "#66AFB2", "#C96A23", "#D3D1C5", "#F5821F"])
         .height(220)
         .radius((pieWidth / 2) - 20)
         .innerRadius(30)
+        .colors(colorScale)
         .transitionDuration(1500)
         .dimension(fundingStatus)
         .group(numProjectsByFundingStatus);
@@ -145,7 +146,7 @@ function makeGraphs(error, projectsJSON) {
         .height(220)
         .radius((pieWidth / 2) - 20)
         .innerRadius(0)
-//        .colors(colourScale)
+        .colors(colorScale)
         .transitionDuration(1500)
         .dimension(subjectDim)
         .group(numPFSubject)
@@ -155,7 +156,7 @@ function makeGraphs(error, projectsJSON) {
         .height(220)
         .radius((pieWidth / 2) - 20)
         .innerRadius(30)
-//        .colors(colourScale)
+        .colors(colorScale)
         .transitionDuration(1500)
         .dimension(gradeDim)
         .group(numGradeRange)
@@ -165,7 +166,7 @@ function makeGraphs(error, projectsJSON) {
         .height(220)
         .radius((pieWidth / 2) - 20)
         .innerRadius(0)
-//        .colors(colourScale)
+        .colors(colorScale)
         .transitionDuration(1500)
         .dimension(areaDim)
         .group(numArea)

@@ -29,22 +29,35 @@ I pretend to run for Governor of a US state. As part of my campaign, I use a dat
 ## dc.js Charts
 
 ### Total Number of Donations
+Simple number display
 
 ### Total Donations in USD
+Simple number display
 
-### Number of Donations
+### Number of Donations over time
+Vertical bar chart
 
 ### Poverty Level
+Horizontal bar chart
 
 ### Resources Type
+Horizontal bar chart
 
 ### Area
+Pie chart
 
 ### Funding Status
+Donut chart
 
 ### Primary Focus Subject
+Pie chart
 
 ### Grade Range
+Donut chart
+
+## Testing
+
+Manually tested for responsiveness and compatibility against various configurations.
 
 ## Hosting
-The application is deployed on the [Heroku](https://.heroku.com) PAAS (platform as a service) using a free dyno and a MongoDB 'add-on'. Config vars are utilised in the Flask framework to automatically switch the application between local development and production modes.
+The application is deployed on the [Heroku](https://.heroku.com) PAAS (platform as a service) platform using a free dyno and a MongoDB add-on. Config variables are utilised in the Flask framework to automatically switch the application between local development and production modes.
