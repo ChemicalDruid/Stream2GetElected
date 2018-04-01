@@ -1,1 +1,1 @@
-web: gunicorn school_donations:app
+web: gunicorn get_yourself_elected:app
